@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="font-poppins ">
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p01-4">
+            <div class="text-3xl font-bold text-blue-700">
+                <i class="fas fa-home mr-2"></i>REAL ESTATE
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="profileBtn" class="flex items-center text-gray-700 hover:text-blue-700">
+                        <i class="fas fa-user text-lg mr-2"></i>
+                        <span>Account</span>
+                    </button>
+                </div>
+                <a href="#" class="text-gray-700 hover:text-blue-700 relative">
+                    <i class="fas fa-heart"></i>
+                    <span class="absolute -top-2 -right-2 bg-blue-700 text-white text-xs rounded-full px-1">0</span>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-blue-700 relative">
+                    <i class="fas fa-bookmark"></i>
+                    <span class="absolute -top-2 -right-2 bg-blue-700 text-white text-xs rounded-full px-1">0</span>
+                </a>
+            </div>
+        </div>
+        <nav class="flex justify-center space-x-8 p-4">
+            <a href="House.html" class="text-gray-700 hover:text-blue-700">Home</a>
+            <a href="#" class="text-blue-700">Properties</a>
+            <a href="#" class="text-gray-700 hover:text-blue-700">About</a>
+            <a href="#" class="text-gray-700 hover:text-blue-700">Services</a>
+            <a href="#" class="text-gray-700 hover:text-blue-700">Reviews</a>
+            <a href="#" class="text-gray-700 hover:text-blue-700">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Search and Filter Section -->
+    <section class="py-8 bg-white shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap gap-4">
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Search properties..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <select id="propertyType" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Property Type</option>
+                    <option value="House">House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Townhouse">Townhouse</option>
+                    <option value="Loft">Loft</option>
+                    <option value="rent">Rent</option>
+                </select>
+                <select id="priceRange" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Price Range</option>
+                    <option value="0-300000">Under $300k</option>
+                    <option value="300000-500000">$300k - $500k</option>
+                    <option value="500000-1000000">$500k - $1M</option>
+                    <option value="1000000-999999999">$1M+</option>
+                </select>
+                <button onclick="searchProperties()" class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div id="p1" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="House" data-price="550000">
+                    <img src="img5.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Modern Family Home</h3>
+                            <span class="text-blue-700 font-bold">$550,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>123 Main St, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>4 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>3 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>2500 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="Apartment" data-price="420000">
+                    <img src="img4.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Luxury Apartment</h3>
+                            <span class="text-blue-700 font-bold">$420,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>456 Park Ave, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>3 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>2 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>1800 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="rent" data-price="2500">
+                    <img src="rent1.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Cozy Rental Home</h3>
+                            <span class="text-blue-700 font-bold">$2,500/mo</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>789 Beach Rd, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>3 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>2 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>1800 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page 2 Properties -->
+            <div id="p2" class="grid grid-cols-1 md:grid-cols-3 gap-8 hidden">
+                <!-- Property Card 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="rent" data-price="1800">
+                    <img src="rent2img.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Modern Rental Apartment</h3>
+                            <span class="text-blue-700 font-bold">$1,800/mo</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>123 Main St, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>2 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>1 Bath</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>1000 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="House" data-price="895000">
+                    <img src="rent3.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Lakefront Property</h3>
+                            <span class="text-blue-700 font-bold">$895,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>456 Lake View Dr, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>4 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>3 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>2800 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="rent" data-price="3500">
+                    <img src="rentimg1.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Luxury Rental Villa</h3>
+                            <span class="text-blue-700 font-bold">$3,500/mo</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>789 Downtown Ave, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>4 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>3 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>2500 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3 Properties -->
+            <div id="p3" class="grid grid-cols-1 md:grid-cols-3 gap-8 hidden">
+                <!-- Property Card 7 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="rent" data-price="4200">
+                    <img src="rent3.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Executive Rental Home</h3>
+                            <span class="text-blue-700 font-bold">$4,200/mo</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>321 Mountain Rd, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>5 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>4 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>3500 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 8 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="rent" data-price="1500">
+                    <img src="villimg5.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Studio Apartment Rental</h3>
+                            <span class="text-blue-700 font-bold">$1,500/mo</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>654 Garden Lane, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>1 Bed</span>
+                            <span><i class="fas fa-bath mr-2"></i>1 Bath</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>600 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 9 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden property-card" data-type="rent" data-price="5500">
+                    <img src="villimg4.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Beachfront Rental Villa</h3>
+                            <span class="text-blue-700 font-bold">$5,500/mo</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>987 Ocean Dr, City</p>
+                        <div class="flex justify-between text-sm text-gray-600 mb-4">
+                            <span><i class="fas fa-bed mr-2"></i>6 Beds</span>
+                            
+                            <span><i class="fas fa-bath mr-2"></i>5 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>4000 sqft</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Buy now</button>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-red-500"><i class="fas fa-heart"></i></button>
+                                <button class="text-gray-500 hover:text-blue-700"><i class="fas fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex space-x-2">
+                    <button onclick="showPage('prev')" class="px-4 py-2 border rounded hover:bg-blue-700 hover:text-white">Previous</button>
+                    <button onclick="showPage(1)" class="px-4 py-2 border rounded bg-blue-700 text-white">1</button>
+                    <button onclick="showPage(2)" class="px-4 py-2 border rounded hover:bg-blue-700 hover:text-white">2</button>
+                    <button onclick="showPage(3)" class="px-4 py-2 border rounded hover:bg-blue-700 hover:text-white">3</button>
+                    <button onclick="showPage('next')" class="px-4 py-2 border rounded hover:bg-blue-700 hover:text-white">Next</button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Properties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@realestate.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Property Street, City</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 py-4">
+            <div class="container mx-auto px-6 text-center text-gray-400">
+                <p>&copy; 2023 REAL ESTATE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!-- // Profile menu toggle -->
+       <script src="propartis.js"></script>
+
+</body>
+</html>

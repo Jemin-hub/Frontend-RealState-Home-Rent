@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- for best shaps and fonts wegith picsetc -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- foricons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="font-poppins">
+    <!-- Header Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="text-3xl font-bold text-blue-700">
+                <!-- i thi icon aave and color blue che  -->
+                <i class="fas fa-home mr-2"></i><a href="#"></a>REAL ESTATE
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="profileBtn" class="flex items-center text-gray-700 hover:text-blue-700">
+                        <i class="fas fa-user text-lg mr-2"></i>
+                        <span>Account</span>
+                    </button>
+                    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
+                        <a href="#" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700">
+                            <i class="fas fa-user-circle mr-3"></i>
+                            <span>My Profile</span>
+                        </a>
+                        <a href="#" onclick="openLoginModal()" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700">
+                            <i class="fas fa-sign-in-alt mr-3"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700">
+                            <i class="fas fa-user-plus mr-3"></i>
+                            <span>Sign Up</span>
+                        </a>
+                        <div class="border-t border-gray-100 my-1"></div>
+                        <a href="#" class="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="#" class="text-gray-700 hover:text-blue-700 relative">
+                    <i class="fas fa-heart"></i>
+                    <span class="absolute -top-2 -right-2 bg-blue-700 text-white text-xs rounded-full px-1">0</span>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-blue-700 relative">
+                    <i class="fas fa-bookmark"></i>
+                    <span class="absolute -top-2 -right-2 bg-blue-700 text-white text-xs rounded-full px-1">0</span>
+                </a>
+            </div>
+        </div>
+        <nav class="flex justify-center space-x-8 p-4">
+            <a href="#" class="text-blue-700">Home</a>
+            <a href="properties.html" class="text-gray-700 hover:text-blue-700">Properties</a>
+            <a href="#about" class="text-gray-700 hover:text-blue-700">About</a>
+            <a href="#services" class="text-gray-700 hover:text-blue-700">Services</a>
+            <a href="#review" class="text-gray-700 hover:text-blue-700">Reviews</a>
+            <a href="#contact" class="text-gray-700 hover:text-blue-700">Contact</a>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="relative h-[600px]">
+        <div class="absolute inset-0">
+            <img src="mainimg.jpg" alt="Hero Image" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <div class="relative container mx-auto px-6 h-full flex items-center">
+            <div class="text-white max-w-2xl">
+                <h1 class="text-5xl font-bold mb-6">Find Your Dream Home</h1>
+                <p class="text-xl mb-8">Discover the perfect property for sale or rent. Your dream home is just a click away.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="bg-blue-700 text-white px-8 py-3 rounded-full hover:bg-blue-800 transition">Buy Property</a>
+                    <a href="#" class="bg-white text-blue-700 px-8 py-3 rounded-full hover:bg-gray-100 transition">Rent Property</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg -mt-32 relative z-10">
+                <form class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Location</label>
+                        <input type="text" placeholder="Enter location" class="w-full p-2 border rounded">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Property Type</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>House</option>
+                            <option>Apartment</option>
+                            <option>Villa</option>
+                            <option>Office</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Price Range</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>$0 - $100,000</option>
+                            <option>$100,000 - $200,000</option>
+                            <option>$200,000 - $500,000</option>
+                            <option>$500,000+</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button class="w-full bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-800">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Featured Properties -->
+    <section id="properties" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Featured Properties</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="img1.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Modern Villa</h3>
+                            <span class="text-blue-700 font-bold">$450,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>123 vision , london</p>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span><i class="fas fa-bed mr-2"></i>3 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>2 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>2000 sqft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="img2.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Luxury Apartment</h3>
+                            <span class="text-blue-700 font-bold">$320,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>456 Park Ave, Tokeyo</p>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span><i class="fas fa-bed mr-2"></i>2 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>2 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>1500 sqft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="img3.jpg" alt="Property" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Family Home</h3>
+                            <span class="text-blue-700 font-bold">$550,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>789 Oak Rd, Barlin</p>
+                        <div class="flex justify-between text-sm text-gray-600">
+                            <span><i class="fas fa-bed mr-2"></i>4 Beds</span>
+                            <span><i class="fas fa-bath mr-2"></i>3 Baths</span>
+                            <span><i class="fas fa-ruler-combined mr-2"></i>2500 sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                    <i class="fas fa-home text-4xl text-blue-700 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4">Buy Property</h3>
+                    <p class="text-gray-600">Find your dream home from our extensive property listings</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                    <i class="fas fa-key text-4xl text-blue-700 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4">Rent Property</h3>
+                    <p class="text-gray-600">Wide selection of properties available for rent</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                    <i class="fas fa-handshake text-4xl text-blue-700 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4">Property Management</h3>
+                    <p class="text-gray-600">Professional management services for property owners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="aboutimg.jpg" alt="About Us" class="rounded-lg shadow-lg">
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">About Us</h2>
+                    <p class="text-gray-600 mb-6">We are a leading real estate agency committed to helping you find your perfect property. With years of experience in the industry, we understand the complexities of real estate transactions and strive to make the process as smooth as possible for our clients.</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-700 mb-2">10+</h3>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-700 mb-2">200+</h3>
+                            <p class="text-gray-600">Properties Sold</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-700 mb-2">50+</h3>
+                            <p class="text-gray-600">Expert Agents</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-700 mb-2">99%</h3>
+                            <p class="text-gray-600">Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Section -->
+    <section id="review" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Client Reviews</h2>
+            <div class="relative">
+                <div class="review-slider overflow-hidden">
+                    <div class="slides flex transition-transform duration-500">
+                        <!-- Review 1 -->
+                        <div class="min-w-full md:w-1/3 px-4">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="font-bold">Sarah Johnson</h4>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"Found my dream home through their excellent service. The team was very professional and helpful."</p>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="min-w-full md:w-1/3 px-4">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="font-bold">Michael Brown</h4>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"Great experience renting through them. Quick response and smooth process throughout."</p>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="min-w-full md:w-1/3 px-4">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="font-bold">Emily Davis</h4>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"Their property management services are excellent. Very reliable and professional team."</p>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="min-w-full md:w-1/3 px-4">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="font-bold">James Wilson</h4>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"Outstanding service! They helped me find the perfect investment property. Highly recommended!"</p>
+                            </div>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="min-w-full md:w-1/3 px-4">
+                            <div class="bg-white p-6 rounded-lg shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h4 class="font-bold">Lisa Anderson</h4>
+                                        <div class="text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"The team went above and beyond to help me sell my property at the best price. Exceptional service!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-700 text-white p-2 rounded-full hover:bg-blue-800" onclick="moveSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-700 text-white p-2 rounded-full hover:bg-blue-800" onclick="moveSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Dots -->
+            <div class="flex justify-center space-x-2 mt-6">
+                <span class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer" onclick="currentSlide(1)"></span>
+                <span class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer" onclick="currentSlide(2)"></span>
+                <span class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer" onclick="currentSlide(3)"></span>
+                <span class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer" onclick="currentSlide(4)"></span>
+                <span class="dot w-3 h-3 rounded-full bg-gray-300 cursor-pointer" onclick="currentSlide(5)"></span>
+            </div>
+        </div>
+
+        <script>
+            let slideIndex = 1;
+            let slideInterval;
+            
+            function startSlideShow() {
+                slideInterval = setInterval(() => {
+                    moveSlide(1);
+                }, 5000); // Change slide every 5 seconds
+            }
+
+            function moveSlide(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                const slides = document.querySelector('.slides');
+                const dots = document.getElementsByClassName('dot');
+                
+                if (n > 5) slideIndex = 1;
+                if (n < 1) slideIndex = 5;
+                
+                // Calculate translation
+                const translation = -(slideIndex - 1) * 100;
+                slides.style.transform = `translateX(${translation}%)`;
+                
+                // Update dots
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].classList.remove('bg-blue-700');
+                    dots[i].classList.add('bg-gray-300');
+                }
+                dots[slideIndex - 1].classList.remove('bg-gray-300');
+                dots[slideIndex - 1].classList.add('bg-blue-700');
+            }
+
+            // Start the slideshow when the page loads
+            document.addEventListener('DOMContentLoaded', () => {
+                showSlides(slideIndex);
+                startSlideShow();
+            });
+        </script>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Contact Us</h2>
+            <div class="max-w-3xl mx-auto">
+                <form class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                            <input type="text" class="w-full p-2 border rounded" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                            <input type="email" class="w-full p-2 border rounded" placeholder="Your email">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                            <textarea class="w-full p-2 border rounded h-32" placeholder="Your message"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button class="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800 w-full">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">REAL ESTATE</h4>
+                    <p class="text-gray-400">Your trusted partner in real estate.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="properties.html" class="text-gray-400 hover:text-white">Properties</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@realestate.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Property Street, City</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 py-4">
+            <div class="container mx-auto px-6 text-center text-gray-400">
+                <p>&copy; 2025 REAL ESTATE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Profile menu toggle
+        const profileBtn = document.getElementById('profileBtn');
+        const profileMenu = document.getElementById('profileMenu');
+        
+        profileBtn.addEventListener('click', () => {
+            profileMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+                profileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
